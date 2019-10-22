@@ -67,6 +67,10 @@
             ul,li {
                 list-style-type: none;
             }
+
+            .is-complete {
+                text-decoration: line-through;
+            }
         </style>
     </head>
     <body>

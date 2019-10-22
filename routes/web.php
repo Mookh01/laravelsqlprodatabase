@@ -10,8 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('projects', 'ProjectsController');
+// use Illuminate\Filesystem\Filesystem;
+//Here we bind something into the service container
+// app()->bind('example', function () {
 
+//     return new \App\Example;
+// });
+
+// Route::get('/', function () {
+//     dd(app('example'), app('example'));
+//     return view('welcome');
+// });
+
+
+Route::resource('projects', 'ProjectsController');
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
+Route::patch('/tasks/{task}', 'ProjectTasksController@update');
 
 Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');

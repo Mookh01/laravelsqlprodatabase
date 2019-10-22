@@ -20,15 +20,9 @@ Create Project
 <div>
 <button type="submit">Create Project</button>
 </div>
-    @if ($errors->any())
-    <div class="alert alert-danger" role="alert">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li> {{ $error }} </li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+
+
+    @include('validation')
 </form>
 @endsection
 

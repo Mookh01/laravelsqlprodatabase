@@ -10,24 +10,47 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// use Illuminate\Filesystem\Filesystem;
+//use Illuminate\Filesystem\Filesystem;
+use App\Services\Twitter;
+use Illuminate\Support\ServiceProvider;
 //Here we bind something into the service container
-// app()->bind('example', function () {
-
+// // 1.
+// app()->bind('task', function () {
+//     return new \App\Task;
+// });
+// // 2.
+// app()->singleton('example', function () {
 //     return new \App\Example;
 // });
-
-// Route::get('/', function () {
-//     dd(app('example'), app('example'));
-//     return view('welcome');
+// // 3.
+// app()->singleton('twitter', function () {
+//     // return new Twitter(config(''));
+//     //return new \App\Services\Twitter('asfdajsdlfasdsdfasf');
+//     return new Twitter('asfdajsdlfasdsdfasf');
 // });
+
+//4.
+//app()->singleton('App\Services\Twitter', function () {
+    //return new Twitter(config(''));
+    //return new \App\Services\Twitter('asfdajsdlfasdsdfasf');
+    // return new Twitter('asfdajsdlfasdsdfasf');
+//});
+
+
+
+Route::get('/', function (Twitter $twitter) {
+//Route::get('/', function () {
+    dd($twitter);
+    //dd(app('task'));
+    return view('welcome');
+});
 
 
 Route::resource('projects', 'ProjectsController');
 Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
 Route::patch('/tasks/{task}', 'ProjectTasksController@update');
 
-Route::get('/', 'PagesController@home');
+// Route::get('/', 'PagesController@home');
 Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 // Route::get('/projects', 'ProjectsController@index');
